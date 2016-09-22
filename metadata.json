@@ -1,5 +1,5 @@
 {
-  "name": "sysstat",
+  "name": "qtechnologies/sysstat",
   "version": "1.0.1",
   "author": "Q-Technologies",
   "summary": " Puppet module to manage the installation and configuration of Sysstat on various OSes",
