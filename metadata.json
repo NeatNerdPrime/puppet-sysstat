@@ -1,0 +1,29 @@
+{
+  "name": "sysstat",
+  "version": "1.0.1",
+  "author": "Q-Technologies",
+  "summary": " Puppet module to manage the installation and configuration of Sysstat on various OSes",
+  "license": "Apache-2.0",
+  "tags": ["sysstat","monitoring"],
+  "source": "https://github.com/Q-Technologies/puppet-sysstat.git",
+  "project_page": "https://github.com/Q-Technologies/puppet-sysstat",
+  "issues_url": "https://github.com/Q-Technologies/puppet-sysstat/issues",
+  "operatingsystem_support": [
+    {
+      "operatingsystem":"RedHat",
+      "operatingsystemrelease": [
+        "6.0",
+        "7.0"
+      ]
+    },
+    {
+      "operatingsystem": "SLES",
+      "operatingsystemrelease": [ 
+        "11",
+        "12"
+     ]
+    }
+  ],
+  "data_provider": "hiera"
+}
+
