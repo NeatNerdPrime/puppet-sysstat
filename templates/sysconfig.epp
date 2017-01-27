@@ -1,0 +1,20 @@
+#
+# FILE MANAGED BY PUPPET
+#
+# sysstat configuration file.
+
+# How long to keep log files (in days).
+# If value is greater than 28, then log files are kept in
+# multiple directories, one for each month.
+HISTORY=<%= $history %>
+
+# Compress (using gzip or bzip2) sa and sar files older than (in days):
+COMPRESSAFTER=<%= $compressafter %>
+
+# Parameters for the system activity data collector (see sadc manual page)
+# which are used for the generation of log files.
+SADC_OPTIONS="<%= $sadc_options %>"
+
+# Compression program to use.
+ZIP="<%= $zip %>"
+

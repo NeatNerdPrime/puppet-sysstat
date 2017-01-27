@@ -1,0 +1,8 @@
+#
+# FILE MANAGED BY PUPPET
+#
+# crontab for sysstat
+
+# Collect data for <%= $duration %> minutes every <%= $interval %> minutes continuously
+*/<%= $interval %> * * * * root [ -x <%= $sa1_path %> ] && exec <%= $sa1_path %> <%= $sa1_options %> <%= $duration_seconds %> <%= $samples %>
+

@@ -1,0 +1,5 @@
+# sysstat/data/debian
+---
+sysstat::conf_path: /etc/sysstat/sysstat
+sysstat::sa1_path: /usr/lib/sysstat/sa1
+sysstat::sa2_path: /usr/lib/sysstat/sa2
