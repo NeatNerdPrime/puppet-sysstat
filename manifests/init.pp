@@ -39,7 +39,7 @@ class sysstat(
 
   if $installpkg == 'yes' {
     package { $package:
-      ensure => latest,
+      ensure => installed,
     }
   } ->
 
