@@ -4,7 +4,7 @@ Puppet module to manage the installation and configuration of Sysstat on various
 This module will install the sysstat package, update the sysstat crontab file and the main sysstat configuration file.  It has reasonable defaults, but the defaults can be overidden through hiera.
 
 ## Instructions
-Put the following values into hiera.  The values below are the defaults, so you can ommit them if you are happy with the defaults.
+Put the following values into hiera.  The values below are the defaults, so you can omit them if you are happy with the defaults.
 ```
   sysstat::sa1_options = "-S ALL",
   sysstat::interval = 2,
@@ -16,7 +16,7 @@ Put the following values into hiera.  The values below are the defaults, so you 
   sysstat::zip = "bzip2",
 ```
     
-Call the class from your code, e.g. `class { 'sysstat': }`
+Call the class from your code, e.g. `class { 'sysstat': }` or `include 'sysstat'`
 
 ## Issues
 This module is using hiera data that is embedded in the module rather than using a params class.  This may not play nicely with other modules using the same technique unless you are using hiera 3.0.6 and above (PE 2015.3.2+).
