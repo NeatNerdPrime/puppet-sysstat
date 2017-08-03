@@ -6,7 +6,7 @@ This module will install the sysstat package, update the sysstat crontab file an
 ## Instructions
 Call the class from your code, e.g. `class { 'sysstat': }` or `include 'sysstat'`
 
-Put the following values into hiera.  The values below are the defaults, so you can omit them if you are happy with the defaults.
+Optionally put the following variables into hiera and adjust to your requirements. The values listed below are the defaults.
 ```
   sysstat::sa1_options: "-S ALL"
   # interval is in minutes - how often to launch sa1
@@ -33,7 +33,7 @@ Setting the `disable` setting to `'yes'` will remove the cron entries, but leave
 The `generate_summary` option determines whether or not sa2 is active (often called daily summary).
 
 ## Limitations
-The invocation duration needs to a minute or greater.  If a sub minute sample size is required, set the `sa1_samples` parameter to greater than 1 to take multiple samples per invocation of sa1.
+The sa1 invocation duration needs to a minute or greater.  If sub minute sample sizes are required, set the `sa1_samples` parameter to greater than 1 to take multiple samples per invocation of sa1.
 
 ## Platform Notes
 ### Suse
