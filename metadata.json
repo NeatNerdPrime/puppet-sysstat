@@ -18,10 +18,32 @@
       ]
     },
     {
+      "operatingsystem":"Centos",
+      "operatingsystemrelease": [
+        "6.0",
+        "7.0"
+      ]
+    },
+    {
+      "operatingsystem":"OEL",
+      "operatingsystemrelease": [
+        "6.0",
+        "7.0"
+      ]
+    },
+    {
       "operatingsystem":"Debian",
       "operatingsystemrelease": [
         "7.0",
         "8.0"
+      ]
+    },
+    {
+      "operatingsystem":"Ubuntu",
+      "operatingsystemrelease": [
+        "12.04",
+        "14.04",
+        "16.04"
       ]
     },
     {

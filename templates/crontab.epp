@@ -3,8 +3,10 @@
 #
 # crontab for sysstat
 
-# Collect data for <%= $duration %> minutes every <%= $interval %> minutes continuously
-*/<%= $interval %> * * * * root [ -x <%= $sa1_path %> ] && exec <%= $sa1_path %> <%= $sa1_options %> <%= $duration_seconds %> <%= $samples %>
+# Collect data for <%= $sa1_duration %> minutes every <%= $sa1_interval %> minutes continuously
+*/<%= $sa1_interval %> * * * * root [ -x <%= $sa1_path %> ] && exec <%= $sa1_path %> <%= $sa1_options %> <%= $sa1_duration_seconds %> <%= $sa1_samples %>
 
-# Generate a daily summary of process accounting at 23:53
-53 23 * * * root  [ -x <%= $sa2_path %> ] && exec <%= $sa2_path %> -A
+<% if $generate_summary == 'yes' { -%>
+# Generate a summary of process accounting at <%= $sa2_hour %>:<%= $sa2_minute %>
+<%= $sa2_minute %> <%= $sa2_hour %> * * * root  [ -x <%= $sa2_path %> ] && exec <%= $sa2_path %> <%= $sa2_options %>
+<% } -%>
