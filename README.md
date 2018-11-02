@@ -45,6 +45,9 @@ On Suse based systems, the defaults for these parameters are different to match 
 ```
 ### Debian\Ubuntu
 Debian based systems normally use the cron.daily to run the summary reports.  This Puppet module will convert this behavior to align with the Red Hat way.  Let me know if this creates any issues for anyone and it can be made into an option or better still create a pull request adding the functionality.
+
+## Development
+If you would like to contribute to or comment on this module, please do so at it's Github repository.  Thanks.
     
 ## Issues
 This module is using hiera data that is embedded in the module rather than using a params class.  This may not play nicely with other modules using the same technique unless you are using hiera 3.0.6 and above (PE 2015.3.2+).
