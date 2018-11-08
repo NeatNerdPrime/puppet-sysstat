@@ -36,15 +36,19 @@ class sysstat (
   $sa1_duration_seconds = $sa1_duration * 60 - 1
 
   if $disable == 'yes' {
-    $ensure = 'absent'
+    $file_ensure = 'absent'
+    $cron_ensure = 'absent'
+    $pkg_ensure = 'absent'
   } else {
-    $ensure = 'file'
+    $file_ensure = 'file'
+    $cron_ensure = 'present'
+    $pkg_ensure = 'latest'
   }
 
   case $::osfamily {
     'AIX': {
       cron { 'sa1_path_weekday':
-              ensure  => $ensure,
+              ensure  => $cron_ensure,
               command => "${sa1_path} 1200 3 &",
               user    => 'adm',
               hour    => ['8-17'],
@@ -52,7 +56,7 @@ class sysstat (
               weekday => ['1-5'],
       }
       cron { 'sa1_path_weekday_after_hours':
-              ensure  => $ensure,
+              ensure  => $cron_ensure,
               command => "${sa1_path} &",
               user    => 'adm',
               minute  => [0],
@@ -60,24 +64,23 @@ class sysstat (
               weekday => ['1-5'],
       }
       cron { 'sa1_path_weekend':
-              ensure  => $ensure,
+              ensure  => $cron_ensure,
               command => "${sa1_path} &",
               user    => 'adm',
               minute  => [0],
               weekday => [0,6],
       }
       cron { 'sa2_path_weekday_after_hours':
-              ensure  => $ensure,
+              ensure  => $cron_ensure,
               command => "${sa2_path} -s 8:00 -e 18:01 -i 3600 -ubcwyaqvm &",
               user    => 'adm',
               minute  => [5],
               hour    => [18],
               weekday => ['1-5'],
       }
-      if $ensure and empty($aix_lpp_source) {
+      if $disable != 'yes' and empty($aix_lpp_source) {
         fail( 'AIX LPP Source cannot be blank if the sysstat package must be installed')
       }
-      $pkg_ensure = $ensure ? { true => latest, default => $ensure }
       package { $package:
         ensure   => $pkg_ensure,
         provider => $aix_provider,
@@ -86,7 +89,7 @@ class sysstat (
     }
     default: {
       file { $cron_path:
-        ensure  => $ensure,
+        ensure  => $file_ensure,
         content => epp('sysstat/crontab.epp', {
           sa1_path             => $sa1_path,
           sa1_options          => $sa1_options,
