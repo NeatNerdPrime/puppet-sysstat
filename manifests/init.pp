@@ -47,41 +47,32 @@ class sysstat (
               ensure  => $ensure,
               command => "${sa1_path} 1200 3 &",
               user    => 'adm',
-              hour    => '8-17',
-              minute  => 0,
-              weekday => '1-5',
+              hour    => ['8-17'],
+              minute  => [0],
+              weekday => ['1-5'],
       }
       cron { 'sa1_path_weekday_after_hours':
               ensure  => $ensure,
               command => "${sa1_path} &",
               user    => 'adm',
-              minute  => 0,
-              hour    => '18-7',
-              weekday => '1-5',
-      }
-      cron { 'remove_sa1_path_weekend':
-              ensure   => absent,
-              command  => "${sa1_path} &",
-              user     => 'adm',
-              minute   => '0',
-              hour     => '*',
-              month    => '*',
-              monthday => '*',
+              minute  => [0],
+              hour    => ['18-7'],
+              weekday => ['1-5'],
       }
       cron { 'sa1_path_weekend':
               ensure  => $ensure,
               command => "${sa1_path} &",
               user    => 'adm',
-              minute  => 0,
-              weekday => '6-0',
+              minute  => [0],
+              weekday => [0,6],
       }
       cron { 'sa2_path_weekday_after_hours':
               ensure  => $ensure,
               command => "${sa2_path} -s 8:00 -e 18:01 -i 3600 -ubcwyaqvm &",
               user    => 'adm',
-              minute  => 5,
-              hour    => '18',
-              weekday => '1-5',
+              minute  => [5],
+              hour    => [18],
+              weekday => ['1-5'],
       }
       if $ensure and empty($aix_lpp_source) {
         fail( 'AIX LPP Source cannot be blank if the sysstat package must be installed')
