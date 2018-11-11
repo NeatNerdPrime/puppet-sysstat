@@ -4,4 +4,3 @@ sysstat::cron_path: /var/spool/cron/crontabs/adm
 sysstat::sa1_path: /usr/lib/sa/sa1
 sysstat::sa2_path: /usr/lib/sa/sa2
 sysstat::package: bos.acct
-sysstat::aix_provider: nim
