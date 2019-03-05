@@ -71,7 +71,7 @@ class sysstat (
               weekday => [0,6],
       }
       cron { 'sa2_path_weekday_after_hours':
-              ensure  => 'absent',
+              ensure  => $cron_ensure,
               command => "${sa2_path} -s 8:00 -e 18:01 -i 3600 -ubcwyaqvm &",
               user    => 'adm',
               minute  => [5],
