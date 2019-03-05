@@ -4,7 +4,7 @@ Puppet module to manage the installation and configuration of Sysstat on various
 This module will install the sysstat package, update the sysstat crontab file and the main sysstat configuration file.  It has reasonable defaults, but the defaults can be overidden through hiera.
 
 ## Instructions
-Call the class from your code, e.g. `class { 'sysstat': }` or `include 'sysstat'`
+Call the class from your code, e.g. `class { 'sysstat': }` or `include 'sysstat'`.  All the values specified for Hiera below can also be inserted as parameters to the module if you prefer not to use Hiera directly.
 
 Optionally put the following variables into hiera and adjust to your requirements. The values listed below are the defaults.
 ```
@@ -45,6 +45,13 @@ On Suse based systems, the defaults for these parameters are different to match 
 ```
 ### Debian\Ubuntu
 Debian based systems normally use the cron.daily to run the summary reports.  This Puppet module will convert this behavior to align with the Red Hat way.  Let me know if this creates any issues for anyone and it can be made into an option or better still create a pull request adding the functionality.
+
+### AIX
+AIX assumes the sysstat package will be installed via an lppsource.  In addition to the generic options that can be set, the lppsource will need to be set in Hiera:
+
+```
+  sysstat::aix_lpp_source: lpp_source_aix720103
+```
 
 ## Development
 If you would like to contribute to or comment on this module, please do so at it's Github repository.  Thanks.
