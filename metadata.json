@@ -1,17 +1,19 @@
 {
-  "name": "qtechnologies/sysstat",
-  "version": "1.2.0",
+  "name": "qtechnologies-sysstat",
+  "version": "1.2.1",
   "author": "Q-Technologies",
   "summary": " Puppet module to manage the installation and configuration of Sysstat on various OSes",
   "license": "Apache-2.0",
-  "tags": ["sysstat","monitoring"],
   "source": "https://github.com/Q-Technologies/puppet-sysstat.git",
   "project_page": "https://github.com/Q-Technologies/puppet-sysstat",
   "issues_url": "https://github.com/Q-Technologies/puppet-sysstat/issues",
-  "dependencies": [],
+  "dependencies": [
+
+  ],
+  "data_provider": "hiera",
   "operatingsystem_support": [
     {
-      "operatingsystem":"AIX",
+      "operatingsystem": "AIX",
       "operatingsystemrelease": [
         "6.1",
         "7.1",
@@ -19,35 +21,35 @@
       ]
     },
     {
-      "operatingsystem":"RedHat",
+      "operatingsystem": "RedHat",
       "operatingsystemrelease": [
         "6.0",
         "7.0"
       ]
     },
     {
-      "operatingsystem":"Centos",
+      "operatingsystem": "Centos",
       "operatingsystemrelease": [
         "6.0",
         "7.0"
       ]
     },
     {
-      "operatingsystem":"OEL",
+      "operatingsystem": "OEL",
       "operatingsystemrelease": [
         "6.0",
         "7.0"
       ]
     },
     {
-      "operatingsystem":"Debian",
+      "operatingsystem": "Debian",
       "operatingsystemrelease": [
         "7.0",
         "8.0"
       ]
     },
     {
-      "operatingsystem":"Ubuntu",
+      "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
         "12.04",
         "14.04",
@@ -56,13 +58,24 @@
     },
     {
       "operatingsystem": "SLES",
-      "operatingsystemrelease": [ 
+      "operatingsystemrelease": [
         "11",
         "12",
         "15"
-     ]
+      ]
     }
   ],
-  "data_provider": "hiera"
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.10.0 < 7.0.0"
+    }
+  ],
+  "tags": [
+    "sysstat",
+    "monitoring"
+  ],
+  "pdk-version": "1.9.1",
+  "template-url": "file:///opt/puppetlabs/pdk/share/cache/pdk-templates.git",
+  "template-ref": "1.9.1-0-g6945d31"
 }
-
