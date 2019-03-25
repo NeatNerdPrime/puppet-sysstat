@@ -48,7 +48,7 @@ class sysstat (
   case $::osfamily {
     'AIX': {
       cron { 'sa1_path_weekday':
-              ensure  => $cron_ensure,
+              ensure  => 'absent',
               command => "${sa1_path} 1200 3 &",
               user    => 'adm',
               hour    => ['8-17'],
@@ -56,7 +56,7 @@ class sysstat (
               weekday => ['1-5'],
       }
       cron { 'sa1_path_weekday_after_hours':
-              ensure  => $cron_ensure,
+              ensure  => 'absent',
               command => "${sa1_path} &",
               user    => 'adm',
               minute  => [0],
@@ -64,7 +64,7 @@ class sysstat (
               weekday => ['1-5'],
       }
       cron { 'sa1_path_weekend':
-              ensure  => $cron_ensure,
+              ensure  => 'absent',
               command => "${sa1_path} &",
               user    => 'adm',
               minute  => [0],
@@ -77,6 +77,13 @@ class sysstat (
               minute  => [5],
               hour    => [18],
               weekday => ['1-5'],
+      }
+      cron { 'sa1_daily_5_mins':
+              ensure  => $cron_ensure,
+              command => "${sa1_path} &",
+              user    => 'adm',
+              minute  => [0,5,10,15,20,25,30,35,40,45,50,55],
+              weekday => ['0-6'],
       }
       if $disable != 'yes' and empty($aix_lpp_source) {
         fail( 'AIX LPP Source cannot be blank if the sysstat package must be installed')
