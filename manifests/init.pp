@@ -85,14 +85,6 @@ class sysstat (
               minute  => [0,5,10,15,20,25,30,35,40,45,50,55],
               weekday => ['0-6'],
       }
-      if $disable != 'yes' and empty($aix_lpp_source) {
-        fail( 'AIX LPP Source cannot be blank if the sysstat package must be installed')
-      }
-      package { $package:
-        ensure   => $pkg_ensure,
-        provider => $aix_provider,
-        source   => $aix_lpp_source,
-      }
     }
     default: {
       file { $cron_path:
