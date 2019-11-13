@@ -12,7 +12,6 @@ class sysstat (
   String $sa2_path,
   String $sa2_hour,
   String $sa2_minute,
-  String $aix_provider,
 
   # Class parameters are populated from External(hiera)/Defaults/Fail
   String    $sa1_options      = '-S ALL',
@@ -30,7 +29,6 @@ class sysstat (
   String    $installpkg       = 'yes',
   String    $generate_summary = 'yes',
   String    $disable          = 'no',
-  String    $aix_lpp_source   = '',
 ) {
   # Convert duration to seconds
   $sa1_duration_seconds = $sa1_duration * 60 - 1
