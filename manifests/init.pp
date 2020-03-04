@@ -105,9 +105,10 @@ class sysstat (
       if $installpkg == 'yes' {
         package { $package:
           ensure => installed,
+          before => File[$conf_path],
         }
       }
-      -> file { $conf_path:
+      file { $conf_path:
         ensure  => file,
         content => epp('sysstat/sysconfig.epp', {
           history       => $history,
