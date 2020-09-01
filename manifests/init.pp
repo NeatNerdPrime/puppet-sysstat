@@ -12,7 +12,6 @@ class sysstat (
   String $sa2_path,
   String $sa2_hour,
   String $sa2_minute,
-  String $aix_provider,
 
   # Class parameters are populated from External(hiera)/Defaults/Fail
   String    $sa1_options      = '-S ALL',
@@ -30,7 +29,6 @@ class sysstat (
   String    $installpkg       = 'yes',
   String    $generate_summary = 'yes',
   String    $disable          = 'no',
-  String    $aix_lpp_source   = '',
 ) {
   # Convert duration to seconds
   $sa1_duration_seconds = $sa1_duration * 60 - 1
@@ -48,7 +46,7 @@ class sysstat (
   case $::osfamily {
     'AIX': {
       cron { 'sa1_path_weekday':
-              ensure  => $cron_ensure,
+              ensure  => 'absent',
               command => "${sa1_path} 1200 3 &",
               user    => 'adm',
               hour    => ['8-17'],
@@ -56,7 +54,7 @@ class sysstat (
               weekday => ['1-5'],
       }
       cron { 'sa1_path_weekday_after_hours':
-              ensure  => $cron_ensure,
+              ensure  => 'absent',
               command => "${sa1_path} &",
               user    => 'adm',
               minute  => [0],
@@ -64,7 +62,7 @@ class sysstat (
               weekday => ['1-5'],
       }
       cron { 'sa1_path_weekend':
-              ensure  => $cron_ensure,
+              ensure  => 'absent',
               command => "${sa1_path} &",
               user    => 'adm',
               minute  => [0],
@@ -78,13 +76,12 @@ class sysstat (
               hour    => [18],
               weekday => ['1-5'],
       }
-      if $disable != 'yes' and empty($aix_lpp_source) {
-        fail( 'AIX LPP Source cannot be blank if the sysstat package must be installed')
-      }
-      package { $package:
-        ensure   => $pkg_ensure,
-        provider => $aix_provider,
-        source   => $aix_lpp_source,
+      cron { 'sa1_daily_5_mins':
+              ensure  => $cron_ensure,
+              command => "${sa1_path} &",
+              user    => 'adm',
+              minute  => [0,5,10,15,20,25,30,35,40,45,50,55],
+              weekday => ['0-6'],
       }
     }
     default: {
@@ -108,9 +105,10 @@ class sysstat (
       if $installpkg == 'yes' {
         package { $package:
           ensure => installed,
+          before => File[$conf_path],
         }
       }
-      -> file { $conf_path:
+      file { $conf_path:
         ensure  => file,
         content => epp('sysstat/sysconfig.epp', {
           history       => $history,

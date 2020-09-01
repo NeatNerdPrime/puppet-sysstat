@@ -47,11 +47,15 @@ On Suse based systems, the defaults for these parameters are different to match 
 Debian based systems normally use the cron.daily to run the summary reports.  This Puppet module will convert this behavior to align with the Red Hat way.  Let me know if this creates any issues for anyone and it can be made into an option or better still create a pull request adding the functionality.
 
 ### AIX
+<<<<<<< HEAD
 AIX assumes the sysstat package will be installed via an lppsource.  In addition to the generic options that can be set, the lppsource will need to be set in Hiera:
 
 ```
   sysstat::aix_lpp_source: lpp_source_aix720103
 ```
+=======
+AIX assumes the sysstat package will be installed as part of the initial OS install, so this module does not provide the ability to install the package otherwise.
+>>>>>>> c92ddc0e6c2c7c8425dc3da5773fca1de4ea64ac
 
 ## Development
 If you would like to contribute to or comment on this module, please do so at it's Github repository.  Thanks.

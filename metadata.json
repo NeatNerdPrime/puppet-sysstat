@@ -1,17 +1,28 @@
 {
+<<<<<<< HEAD
   "name": "qtechnologies/sysstat",
   "version": "1.2.0",
+=======
+  "name": "qtechnologies-sysstat",
+  "version": "1.2.3",
+>>>>>>> c92ddc0e6c2c7c8425dc3da5773fca1de4ea64ac
   "author": "Q-Technologies",
   "summary": " Puppet module to manage the installation and configuration of Sysstat on various OSes",
   "license": "Apache-2.0",
-  "tags": ["sysstat","monitoring"],
   "source": "https://github.com/Q-Technologies/puppet-sysstat.git",
   "project_page": "https://github.com/Q-Technologies/puppet-sysstat",
   "issues_url": "https://github.com/Q-Technologies/puppet-sysstat/issues",
-  "dependencies": [],
+  "dependencies": [
+
+  ],
+  "data_provider": "hiera",
   "operatingsystem_support": [
     {
+<<<<<<< HEAD
       "operatingsystem":"AIX",
+=======
+      "operatingsystem": "AIX",
+>>>>>>> c92ddc0e6c2c7c8425dc3da5773fca1de4ea64ac
       "operatingsystemrelease": [
         "6.1",
         "7.1",
@@ -19,35 +30,39 @@
       ]
     },
     {
+<<<<<<< HEAD
       "operatingsystem":"RedHat",
+=======
+      "operatingsystem": "RedHat",
+>>>>>>> c92ddc0e6c2c7c8425dc3da5773fca1de4ea64ac
       "operatingsystemrelease": [
         "6.0",
         "7.0"
       ]
     },
     {
-      "operatingsystem":"Centos",
+      "operatingsystem": "Centos",
       "operatingsystemrelease": [
         "6.0",
         "7.0"
       ]
     },
     {
-      "operatingsystem":"OEL",
+      "operatingsystem": "OEL",
       "operatingsystemrelease": [
         "6.0",
         "7.0"
       ]
     },
     {
-      "operatingsystem":"Debian",
+      "operatingsystem": "Debian",
       "operatingsystemrelease": [
         "7.0",
         "8.0"
       ]
     },
     {
-      "operatingsystem":"Ubuntu",
+      "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
         "12.04",
         "14.04",
@@ -56,13 +71,28 @@
     },
     {
       "operatingsystem": "SLES",
-      "operatingsystemrelease": [ 
+      "operatingsystemrelease": [
         "11",
         "12",
         "15"
+<<<<<<< HEAD
      ]
+=======
+      ]
     }
   ],
-  "data_provider": "hiera"
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.10.0 < 7.0.0"
+>>>>>>> c92ddc0e6c2c7c8425dc3da5773fca1de4ea64ac
+    }
+  ],
+  "tags": [
+    "sysstat",
+    "monitoring"
+  ],
+  "pdk-version": "1.17.0",
+  "template-url": "pdk-default#1.17.0",
+  "template-ref": "tags/1.17.0-0-gd3a4319"
 }
-

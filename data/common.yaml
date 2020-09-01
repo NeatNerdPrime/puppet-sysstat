@@ -9,4 +9,3 @@ sysstat::sa2_path: /usr/lib64/sa/sa2
 sysstat::package: sysstat
 sysstat::sa2_hour: '23'
 sysstat::sa2_minute: '53'
-sysstat::aix_provider: nim
