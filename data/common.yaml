@@ -6,6 +6,7 @@ sysstat::cron_path: /etc/cron.d/sysstat
 sysstat::cron_path2: /etc/cron.daily/sysstat
 sysstat::sa1_path: /usr/lib64/sa/sa1
 sysstat::sa2_path: /usr/lib64/sa/sa2
+sysstat::sa_dir: /var/log/sa
 sysstat::package: sysstat
 sysstat::sa2_hour: '23'
 sysstat::sa2_minute: '53'
