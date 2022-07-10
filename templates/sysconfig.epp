@@ -15,6 +15,21 @@ COMPRESSAFTER=<%= $compressafter %>
 # which are used for the generation of log files.
 SADC_OPTIONS="<%= $sadc_options %>"
 
+# Directory where sa and sar files are saved. The directory must exist.
+SA_DIR=<%= $sa_dir %>
+
 # Compression program to use.
 ZIP="<%= $zip %>"
 
+# Tell sa2 to wait for a random delay in the range 0 .. ${DELAY_RANGE} before
+# executing. This delay is expressed in seconds, and is aimed at preventing
+# a massive I/O burst at the same time on VM sharing the same storage area.
+# Set this variable to 0 to make sa2 generate reports files immediately.
+DELAY_RANGE=<%= $sa2_delay_range %>
+
+# The sa1 and sa2 scripts generate system activity data and report files in
+# the <%= $sa_dir%> directory. By default the files are created with umask 0022
+# and are therefore readable for all users. Change this variable to restrict
+# the permissions on the files (e.g. use 0027 to adhere to more strict
+# security standards).
+UMASK=<%= $sa_umask %>

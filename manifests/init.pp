@@ -12,6 +12,7 @@ class sysstat (
   String $sa2_path,
   String $sa2_hour,
   String $sa2_minute,
+  String $sa_dir,
 
   # Class parameters are populated from External(hiera)/Defaults/Fail
   String    $sa1_options      = '-S ALL',
@@ -29,6 +30,8 @@ class sysstat (
   String    $installpkg       = 'yes',
   String    $generate_summary = 'yes',
   String    $disable          = 'no',
+  Integer   $sa2_delay_range  = 0,
+  String    $sa_umask         = '0022',
 ) {
   # Convert duration to seconds
   $sa1_duration_seconds = $sa1_duration * 60 - 1
@@ -111,11 +114,20 @@ class sysstat (
       file { $conf_path:
         ensure  => file,
         content => epp('sysstat/sysconfig.epp', {
-          history       => $history,
-          compressafter => $compressafter,
-          sadc_options  => $sadc_options,
-          zip           => $zip,
+          history         => $history,
+          compressafter   => $compressafter,
+          sa_dir          => $sa_dir,
+          sa2_delay_range => $sa2_delay_range,
+          sadc_options    => $sadc_options,
+          sa_umask        => $sa_umask,
+          zip             => $zip,
         }),
+      }
+
+      file { $sa_dir:
+        ensure => directory,
+        owner  => 'root',
+        group  => 'root',
       }
 
       # With this module we disable the Debian uniqueness regardless of whether 
