@@ -1,6 +1,6 @@
 {
   "name": "qtechnologies-sysstat",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "author": "Q-Technologies",
   "summary": " Puppet module to manage the installation and configuration of Sysstat on various OSes",
   "license": "Apache-2.0",
@@ -68,14 +68,14 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 4.10.0 < 8.0.0"
+      "version_requirement": ">= 4.10.0 < 9.0.0"
     }
   ],
   "tags": [
     "sysstat",
     "monitoring"
   ],
-  "pdk-version": "2.5.0",
-  "template-url": "pdk-default#2.5.0",
-  "template-ref": "tags/2.5.0-0-g369d483"
+  "pdk-version": "3.0.0",
+  "template-url": "pdk-default#3.0.0",
+  "template-ref": "tags/3.0.0-0-g056e50d"
 }
