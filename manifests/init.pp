@@ -46,7 +46,7 @@ class sysstat (
     $pkg_ensure = 'latest'
   }
 
-  case $::osfamily {
+  case $facts['os']['family'] {
     'AIX': {
       cron { 'sa1_path_weekday':
               ensure  => 'absent',
