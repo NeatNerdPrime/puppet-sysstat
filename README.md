@@ -23,14 +23,12 @@ Optionally put the following variables into hiera and adjust to your requirement
   sysstat::compressafter: 31
   sysstat::sadc_options: "-S DISK"
   sysstat::zip: "bzip2"
-  sysstat::installpkg: 'yes'
   sysstat::generate_summary: 'yes'
   sysstat::disable: 'no'
-
 ```
-Setting the `disable` setting to `'yes'` will remove the cron entries, but leave the package installed.
+Setting the `disable` setting to `'yes'` will remove the cron entries or disable and stop sysstat-collect.timer, but will leave the package installed.
 
-The `generate_summary` option determines whether or not sa2 is active (often called daily summary).
+The `generate_summary` option determines whether sa2 or sysstat-summary.timer (often called daily summary) will be active or not.
 
 ## Limitations
 The sa1 invocation duration needs to a minute or greater.  If sub minute sample sizes are required, set the `sa1_samples` parameter to greater than 1 to take multiple samples per invocation of sa1.

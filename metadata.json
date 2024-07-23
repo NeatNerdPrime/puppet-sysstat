@@ -1,6 +1,6 @@
 {
   "name": "qtechnologies-sysstat",
-  "version": "1.2.8",
+  "version": "2.0.0",
   "author": "Q-Technologies",
   "summary": " Puppet module to manage the installation and configuration of Sysstat on various OSes",
   "license": "Apache-2.0",
@@ -24,28 +24,37 @@
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
         "6.0",
-        "7.0"
+        "7.0",
+        "8.0",
+        "9.0"
       ]
     },
     {
       "operatingsystem": "Centos",
       "operatingsystemrelease": [
         "6.0",
-        "7.0"
+        "7.0",
+        "8.0",
+        "9.0"
       ]
     },
     {
       "operatingsystem": "OEL",
       "operatingsystemrelease": [
         "6.0",
-        "7.0"
+        "7.0",
+        "8.0",
+        "9.0"
       ]
     },
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
         "7.0",
-        "8.0"
+        "8.0",
+        "9.0",
+        "10.0",
+        "11.0"
       ]
     },
     {
@@ -53,7 +62,11 @@
       "operatingsystemrelease": [
         "12.04",
         "14.04",
-        "16.04"
+        "16.04",
+        "18.04",
+        "20.04",
+        "22.04",
+        "24.04"
       ]
     },
     {

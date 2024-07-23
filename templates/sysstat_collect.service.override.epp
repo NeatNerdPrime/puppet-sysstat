@@ -1,0 +1,2 @@
+[Service]
+ExecStart=<%= $sa1_path %> <%= $sa1_duration_seconds %> <%= $sa1_samples %>
