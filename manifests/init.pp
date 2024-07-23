@@ -49,59 +49,59 @@ class sysstat (
   case $facts['os']['family'] {
     'AIX': {
       cron { 'sa1_path_weekday':
-              ensure  => 'absent',
-              command => "${sa1_path} 1200 3 &",
-              user    => 'adm',
-              hour    => ['8-17'],
-              minute  => [0],
-              weekday => ['1-5'],
+        ensure  => 'absent',
+        command => "${sa1_path} 1200 3 &",
+        user    => 'adm',
+        hour    => ['8-17'],
+        minute  => [0],
+        weekday => ['1-5'],
       }
       cron { 'sa1_path_weekday_after_hours':
-              ensure  => 'absent',
-              command => "${sa1_path} &",
-              user    => 'adm',
-              minute  => [0],
-              hour    => ['18-7'],
-              weekday => ['1-5'],
+        ensure  => 'absent',
+        command => "${sa1_path} &",
+        user    => 'adm',
+        minute  => [0],
+        hour    => ['18-7'],
+        weekday => ['1-5'],
       }
       cron { 'sa1_path_weekend':
-              ensure  => 'absent',
-              command => "${sa1_path} &",
-              user    => 'adm',
-              minute  => [0],
-              weekday => [0,6],
+        ensure  => 'absent',
+        command => "${sa1_path} &",
+        user    => 'adm',
+        minute  => [0],
+        weekday => [0,6],
       }
       cron { 'sa2_path_weekday_after_hours':
-              ensure  => $cron_ensure,
-              command => "${sa2_path} -s 8:00 -e 18:01 -i 3600 -ubcwyaqvm &",
-              user    => 'adm',
-              minute  => [5],
-              hour    => [18],
-              weekday => ['1-5'],
+        ensure  => $cron_ensure,
+        command => "${sa2_path} -s 8:00 -e 18:01 -i 3600 -ubcwyaqvm &",
+        user    => 'adm',
+        minute  => [5],
+        hour    => [18],
+        weekday => ['1-5'],
       }
       cron { 'sa1_daily_5_mins':
-              ensure  => $cron_ensure,
-              command => "${sa1_path} &",
-              user    => 'adm',
-              minute  => [0,5,10,15,20,25,30,35,40,45,50,55],
-              weekday => ['0-6'],
+        ensure  => $cron_ensure,
+        command => "${sa1_path} &",
+        user    => 'adm',
+        minute  => [0,5,10,15,20,25,30,35,40,45,50,55],
+        weekday => ['0-6'],
       }
     }
     default: {
       file { $cron_path:
         ensure  => $file_ensure,
         content => epp('sysstat/crontab.epp', {
-          sa1_path             => $sa1_path,
-          sa1_options          => $sa1_options,
-          sa1_interval         => $sa1_interval,
-          sa1_duration         => $sa1_duration,
-          sa1_duration_seconds => $sa1_duration_seconds,
-          sa1_samples          => $sa1_samples,
-          sa2_path             => $sa2_path,
-          sa2_options          => $sa2_options,
-          sa2_minute           => $sa2_minute,
-          sa2_hour             => $sa2_hour,
-          generate_summary     => $generate_summary,
+            sa1_path             => $sa1_path,
+            sa1_options          => $sa1_options,
+            sa1_interval         => $sa1_interval,
+            sa1_duration         => $sa1_duration,
+            sa1_duration_seconds => $sa1_duration_seconds,
+            sa1_samples          => $sa1_samples,
+            sa2_path             => $sa2_path,
+            sa2_options          => $sa2_options,
+            sa2_minute           => $sa2_minute,
+            sa2_hour             => $sa2_hour,
+            generate_summary     => $generate_summary,
         }),
       }
 
@@ -111,16 +111,17 @@ class sysstat (
           before => File[$conf_path],
         }
       }
+
       file { $conf_path:
         ensure  => file,
         content => epp('sysstat/sysconfig.epp', {
-          history         => $history,
-          compressafter   => $compressafter,
-          sa_dir          => $sa_dir,
-          sa2_delay_range => $sa2_delay_range,
-          sadc_options    => $sadc_options,
-          sa_umask        => $sa_umask,
-          zip             => $zip,
+            history         => $history,
+            compressafter   => $compressafter,
+            sa_dir          => $sa_dir,
+            sa2_delay_range => $sa2_delay_range,
+            sadc_options    => $sadc_options,
+            sa_umask        => $sa_umask,
+            zip             => $zip,
         }),
       }
 
@@ -130,7 +131,7 @@ class sysstat (
         group  => 'root',
       }
 
-      # With this module we disable the Debian uniqueness regardless of whether 
+      # With this module we disable the Debian uniqueness regardless of whether
       # the module is disabled or not
       if $facts['os']['family'] == 'Debian' {
         service { 'sysstat':
