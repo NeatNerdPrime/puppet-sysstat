@@ -98,8 +98,8 @@ class sysstat (
       }
 
       if ($facts['os']['family'] == 'RedHat' and Float($facts['os']['release']['major']) >= 8.0)
-      or ($facts['os']['distro']['id'] == 'Debian' and Float($facts['os']['release']['major']) >= 11.0 )
-      or ($facts['os']['distro']['id'] == 'Ubuntu' and Float($facts['os']['release']['major']) >= 22.04) {
+      or ($facts['os']['distro'] and $facts['os']['distro']['id'] == 'Debian' and Float($facts['os']['release']['major']) >= 11.0 )
+      or ($facts['os']['distro'] and $facts['os']['distro']['id'] == 'Ubuntu' and Float($facts['os']['release']['major']) >= 22.04) {
         file { [
             '/etc/systemd/system/sysstat-summary.timer.d',
             '/etc/systemd/system/sysstat-collect.timer.d',
